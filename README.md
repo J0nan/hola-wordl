@@ -4,6 +4,8 @@ It's [Wordle](https://www.powerlanguage.co.uk/wordle/) but you can play forever!
 
 Play it [**here**](https://hellowordl.net/).
 
+The words are in Spanish
+
 ## Introduction
 
 Wordle is a word game similar to the TV show [Lingo](<https://en.wikipedia.org/wiki/Lingo_(British_game_show)>).

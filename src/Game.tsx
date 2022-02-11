@@ -30,7 +30,8 @@ interface GameProps {
   keyboardLayout: string;
 }
 
-const targets = targetList.slice(0, targetList.indexOf("murky") + 1); // Words no rarer than this one
+const targets = targetList;
+// const targets = targetList.slice(0, targetList.indexOf("murky") + 1); // Words no rarer than this one
 const minLength = 4;
 const maxLength = 11;
 
@@ -162,7 +163,7 @@ function Game(props: GameProps) {
       return;
     }
     if (guesses.length === props.maxGuesses) return;
-    if (/^[a-z]$/i.test(key)) {
+    if (/^([a-z]|ñ)$/i.test(key)) {
       setCurrentGuess((guess) =>
         (guess + key.toLowerCase()).slice(0, wordLength)
       );

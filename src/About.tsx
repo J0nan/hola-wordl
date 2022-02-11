@@ -6,80 +6,76 @@ export function About() {
   return (
     <div className="App-about">
       <p>
-        <i>hello wordl</i> is a remake of the word game{" "}
+        <i>hola wordl</i> es una traducción de {" "}
+        <a href="https://hellowordl.net/">
+          <i>hello wordl</i>
+        </a>{" "}
+        , que a su vez es un remake del juego de palabras {" "}
         <a href="https://www.powerlanguage.co.uk/wordle/">
           <i>Wordle</i>
         </a>{" "}
-        by <a href="https://twitter.com/powerlanguish">powerlanguage</a>, which
-        I think is based on the TV show <i>Lingo</i>.
+        de <a href="https://twitter.com/powerlanguish">powerlanguage</a>, que
+        según creo está basado en la serie <i>Lingo</i>.
       </p>
       <p>
-        You get {maxGuesses} tries to guess a target word.
+        Tienes por defecto {maxGuesses} intentos para averiguar la palabra.
+        El número de intentos se puede cambiar desde los ajustes.
         <br />
-        After each guess, you get Mastermind-style feedback.
+        Después de cada intento obtienes pistas.
       </p>
       <hr />
       <Row
         rowState={RowState.LockedIn}
         wordLength={4}
         cluedLetters={[
-          { clue: Clue.Absent, letter: "w" },
-          { clue: Clue.Absent, letter: "o" },
-          { clue: Clue.Correct, letter: "r" },
-          { clue: Clue.Elsewhere, letter: "d" },
+          { clue: Clue.Absent, letter: "h" },
+          { clue: Clue.Elsewhere, letter: "o" },
+          { clue: Clue.Correct, letter: "l" },
+          { clue: Clue.Absent, letter: "a" },
         ]}
       />
       <p>
-        <b>W</b> and <b>O</b> aren't in the target word at all.
+        <b>H</b> y <b>A</b> no se encuentran en la palabra a averiguar.
       </p>
       <p>
-        <b className={"green-bg"}>R</b> is correct! The third letter is{" "}
-        <b className={"green-bg"}>R</b>
+        <b className={"green-bg"}>L</b> es corresta! La tercera letra es {" "}
+        <b className={"green-bg"}>L</b>
         .<br />
-        <strong>(There may still be a second R in the word.)</strong>
+        <strong>(Puede seguir habiendo una segunda R en la palabra.)</strong>
       </p>
       <p>
-        <b className={"yellow-bg"}>D</b> occurs <em>elsewhere</em> in the target
-        word.
+        <b className={"yellow-bg"}>O</b> se encuentra en la palabra pero <em>en otra posición</em>.
         <br />
-        <strong>(Perhaps more than once. 🤔)</strong>
+        <strong>(A lo mejor más de una vez. 🤔)</strong>
       </p>
       <hr />
       <p>
-        Let's move the <b>D</b> in our next guess:
+        Movamos la <b>O</b> en nuestro próximo intento:
       </p>
       <Row
         rowState={RowState.LockedIn}
         wordLength={4}
         cluedLetters={[
-          { clue: Clue.Correct, letter: "d" },
-          { clue: Clue.Correct, letter: "a" },
-          { clue: Clue.Correct, letter: "r" },
-          { clue: Clue.Absent, letter: "k" },
+          { clue: Clue.Absent, letter: "c" },
+          { clue: Clue.Correct, letter: "e" },
+          { clue: Clue.Correct, letter: "l" },
+          { clue: Clue.Correct, letter: "o" },
         ]}
-        annotation={"So close!"}
+        annotation={"¡Casi!"}
       />
       <Row
         rowState={RowState.LockedIn}
         wordLength={4}
         cluedLetters={[
-          { clue: Clue.Correct, letter: "d" },
-          { clue: Clue.Correct, letter: "a" },
-          { clue: Clue.Correct, letter: "r" },
-          { clue: Clue.Correct, letter: "t" },
+          { clue: Clue.Correct, letter: "p" },
+          { clue: Clue.Correct, letter: "e" },
+          { clue: Clue.Correct, letter: "l" },
+          { clue: Clue.Correct, letter: "o" },
         ]}
-        annotation={"Got it!"}
+        annotation={"¡Acertada!"}
       />
       <p>
-        Report issues{" "}
-        <a href="https://github.com/lynn/hello-wordl/issues">here</a>, or tweet{" "}
-        <a href="https://twitter.com/chordbug">@chordbug</a>.
-      </p>
-      <p>
-        This game will be free and ad-free forever,
-        <br />
-        but you can <a href="https://ko-fi.com/chordbug">buy me a coffee</a> if
-        you'd like.
+        Este juego será gratis y sin anuncios para siempre.
       </p>
     </div>
   );

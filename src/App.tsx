@@ -39,9 +39,10 @@ function App() {
   const [difficulty, setDifficulty] = useSetting<number>("difficulty", 0);
   const [keyboard, setKeyboard] = useSetting<string>(
     "keyboard",
-    "qwertyuiop-asdfghjkl-BzxcvbnmE"
+    "qwertyuiop-asdfghjklñ-BzxcvbnmE"
   );
   const [enterLeft, setEnterLeft] = useSetting<boolean>("enter-left", false);
+  const [maxGuesses, setMaxGuesses] = useSetting<number>("maxGuesses",6)
 
   useEffect(() => {
     document.body.className = dark ? "dark" : "";
@@ -74,9 +75,9 @@ function App() {
             fontStyle: difficulty > 1 ? "italic" : "inherit",
           }}
         >
-          hell
+          hol
         </span>
-        o wordl
+        a wordl
       </h1>
       <div className="top-right">
         {page !== "game" ? (
@@ -159,9 +160,9 @@ function App() {
               value={keyboard}
               onChange={(e) => setKeyboard(e.target.value)}
             >
-              <option value="qwertyuiop-asdfghjkl-BzxcvbnmE">QWERTY</option>
+              <option value="qwertyuiop-asdfghjklñ-BzxcvbnmE">QWERTY</option>
               <option value="azertyuiop-qsdfghjklm-BwxcvbnE">AZERTY</option>
-              <option value="qwertzuiop-asdfghjkl-ByxcvbnmE">QWERTZ</option>
+              <option value="qwertzuiop-asdfghjklñ-ByxcvbnmE">QWERTZ</option>
               <option value="BpyfgcrlE-aoeuidhtns-qjkxbmwvz">Dvorak</option>
               <option value="qwfpgjluy-arstdhneio-BzxcvbkmE">Colemak</option>
             </select>
@@ -173,6 +174,29 @@ function App() {
               onChange={() => setEnterLeft((x: boolean) => !x)}
             />
             <label htmlFor="enter-left-setting">"Enter" on left side</label>
+          </div>
+          <div className="Settings-setting">
+            <label htmlFor="maxGuesses-setting">Número de intentos (por defecto es 6):</label>
+            <select
+              name="maxGuesses-setting"
+              id="maxGuesses-setting"
+              value={maxGuesses}
+              onChange={(e) => setMaxGuesses(parseInt(e.target.value))}
+            >
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+            </select>
           </div>
         </div>
       )}

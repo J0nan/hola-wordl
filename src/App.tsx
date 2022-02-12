@@ -75,17 +75,17 @@ function App() {
             fontStyle: difficulty > 1 ? "italic" : "inherit",
           }}
         >
-          hol
+          hola
         </span>
-        a wordl
+        &nbsp; wordl
       </h1>
       <div className="top-right">
         {page !== "game" ? (
           link("❌", "Close", "game")
         ) : (
           <>
-            {link("❓", "About", "about")}
-            {link("⚙️", "Settings", "settings")}
+            {link("❓", "Ayuda", "about")}
+            {link("⚙️", "Ajustes", "settings")}
           </>
         )}
       </div>
@@ -98,7 +98,7 @@ function App() {
         }}
       >
         <a href={seed ? "?random" : "?seed=" + todaySeed}>
-          {seed ? "Random" : "Today's"}
+          {seed ? "Aleatorio" : "Palabra del día"}
         </a>
       </div>
       {page === "about" && <About />}
@@ -111,7 +111,7 @@ function App() {
               checked={dark}
               onChange={() => setDark((x: boolean) => !x)}
             />
-            <label htmlFor="dark-setting">Dark theme</label>
+            <label htmlFor="dark-setting">Tema oscuro</label>
           </div>
           <div className="Settings-setting">
             <input
@@ -120,7 +120,7 @@ function App() {
               checked={colorBlind}
               onChange={() => setColorBlind((x: boolean) => !x)}
             />
-            <label htmlFor="colorblind-setting">High-contrast colors</label>
+            <label htmlFor="colorblind-setting">Colores de alto contraste</label>
           </div>
           <div className="Settings-setting">
             <input
@@ -132,28 +132,28 @@ function App() {
               onChange={(e) => setDifficulty(+e.target.value)}
             />
             <div>
-              <label htmlFor="difficulty-setting">Difficulty:</label>
-              <strong>{["Normal", "Hard", "Ultra Hard"][difficulty]}</strong>
+              <label htmlFor="difficulty-setting">Dificultad:</label>
+              <strong>{["Normal", "Difícil", "Ultra Difícil"][difficulty]}</strong>
               <div
                 style={{
                   fontSize: 14,
-                  height: 40,
+                  height: 80,
                   marginLeft: 8,
                   marginTop: 8,
                 }}
               >
                 {
                   [
-                    `Guesses must be valid dictionary words.`,
-                    `Wordle's "Hard Mode". Green letters must stay fixed, and yellow letters must be reused.`,
-                    `An even stricter Hard Mode. Yellow letters must move away from where they were clued, and gray clues must be obeyed.`,
+                    `Los intentos deberán estar en el diccionario.`,
+                    `Wordle's "Modo difícil". Las letras verdes deberán quedarse en su sitio, y las letras amarillas deberán ser reutilizadas.`,
+                    `Un modo más estricto que el Modo difícil. Las letras amarillas se deben mover y las grises no se podrán reutilizar.`,
                   ][difficulty]
                 }
               </div>
             </div>
           </div>
           <div className="Settings-setting">
-            <label htmlFor="keyboard-setting">Keyboard layout:</label>
+            <label htmlFor="keyboard-setting">Desitribución del teclado:</label>
             <select
               name="keyboard-setting"
               id="keyboard-setting"
@@ -166,6 +166,8 @@ function App() {
               <option value="BpyfgcrlE-aoeuidhtns-qjkxbmwvz">Dvorak</option>
               <option value="qwfpgjluy-arstdhneio-BzxcvbkmE">Colemak</option>
             </select>
+          </div>
+          <div className="Settings-setting">
             <input
               style={{ marginLeft: 20 }}
               id="enter-left-setting"
@@ -173,7 +175,7 @@ function App() {
               checked={enterLeft}
               onChange={() => setEnterLeft((x: boolean) => !x)}
             />
-            <label htmlFor="enter-left-setting">"Enter" on left side</label>
+            <label htmlFor="enter-left-setting">"Intro" en el lado izquierdo</label>
           </div>
           <div className="Settings-setting">
             <label htmlFor="maxGuesses-setting">Número de intentos (por defecto es 6):</label>

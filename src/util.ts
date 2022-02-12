@@ -78,7 +78,7 @@ export function describeSeed(seed: number): string {
     day >= 1 &&
     day <= days[month]
   ) {
-    return new Date(year, month - 1, day).toLocaleDateString("en-US", {
+    return new Date(year, month - 1, day).toLocaleDateString("es-ES", {
       day: "numeric",
       month: "long",
       year: "numeric",

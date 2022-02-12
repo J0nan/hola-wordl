@@ -95,10 +95,11 @@ function Game(props: GameProps) {
     for (let i = 1; i < gameNumber; i++) randomTarget(wordLength);
     return challenge || randomTarget(wordLength);
   });
+  const raeUrl="https://dle.rae.es/" + target;
   const [hint, setHint] = useState<string>(
     challengeError
-      ? `Invalid challenge string, playing random game.`
-      : `Make your first guess!`
+      ? `Desafio invalido, juega en el modo aleatorio.`
+      : `¡Haz el primer intento!`
   );
   const currentSeedParams = () =>
     `?seed=${seed}&length=${wordLength}&game=${gameNumber}`;
@@ -174,11 +175,11 @@ function Game(props: GameProps) {
       setHint("");
     } else if (key === "Enter") {
       if (currentGuess.length !== wordLength) {
-        setHint("Too short");
+        setHint("Muy corta");
         return;
       }
       if (!dictionary.includes(currentGuess)) {
-        setHint("Not a valid word");
+        setHint("Palabra no válida");
         return;
       }
       for (const g of guesses) {
@@ -193,15 +194,15 @@ function Game(props: GameProps) {
       setCurrentGuess((guess) => "");
 
       const gameOver = (verbed: string) =>
-        `You ${verbed}! The answer was ${target.toUpperCase()}. (Enter to ${
-          challenge ? "play a random game" : "play again"
-        })`;
+        `¡Has ${verbed}! La respuesta era ${target.toUpperCase()} (Presiona intro para ${
+          challenge ? "jugar de manera aleatoria" : "jugar de nuevo"
+        }).`;
 
       if (currentGuess === target) {
-        setHint(gameOver("won"));
+        setHint(gameOver("ganado"));
         setGameState(GameState.Won);
       } else if (guesses.length + 1 === props.maxGuesses) {
-        setHint(gameOver("lost"));
+        setHint(gameOver("perdido"));
         setGameState(GameState.Lost);
       } else {
         setHint("");
@@ -260,7 +261,7 @@ function Game(props: GameProps) {
   return (
     <div className="Game" style={{ display: props.hidden ? "none" : "block" }}>
       <div className="Game-options">
-        <label htmlFor="wordLength">Letters:</label>
+        <label htmlFor="wordLength">Letras:</label>
         <input
           type="range"
           min={minLength}
@@ -280,7 +281,7 @@ function Game(props: GameProps) {
             setCurrentGuess("");
             setTarget(randomTarget(length));
             setWordLength(length);
-            setHint(`${length} letters`);
+            setHint(`${length} letras`);
           }}
         ></input>
         <button
@@ -294,7 +295,7 @@ function Game(props: GameProps) {
             (document.activeElement as HTMLElement)?.blur();
           }}
         >
-          Give up
+          Rendirse
         </button>
       </div>
       <table
@@ -321,18 +322,18 @@ function Game(props: GameProps) {
       />
       <div className="Game-seed-info">
         {challenge
-          ? "playing a challenge game"
+          ? "jugando en el modo desafío"
           : seed
-          ? `${describeSeed(seed)} — length ${wordLength}, game ${gameNumber}`
-          : "playing a random game"}
+          ? `${describeSeed(seed)} — longitud ${wordLength}, juego ${gameNumber}`
+          : "jugando en el modo aleatorio"}
       </div>
       <p>
         <button
           onClick={() => {
-            share("Link copied to clipboard!");
+            share("¡Enlace copiado!");
           }}
         >
-          Share a link to this game
+          Comparte un enlace a este juego
         </button>{" "}
         {gameState !== GameState.Playing && (
           <button
@@ -341,7 +342,7 @@ function Game(props: GameProps) {
                 ? ["⬛", "🟦", "🟧"]
                 : ["⬛", "🟨", "🟩"];
               share(
-                "Result copied to clipboard!",
+                "¡Resultados copiados!",
                 guesses
                   .map((guess) =>
                     clue(guess, target)
@@ -349,13 +350,22 @@ function Game(props: GameProps) {
                       .join("")
                   )
                   .join("\n")
-              );
+                  );
             }}
           >
-            Share emoji results
+            Comparte tu resultado
           </button>
         )}
       </p>
+      <a
+          style={{ flex: "0 0 auto" }}
+          hidden={gameState === GameState.Playing}
+          target="_blank"
+          href={raeUrl}
+          onClick={() => {
+            (document.activeElement as HTMLElement)?.blur();
+          }}
+        >Definición de {target} en la RAE</a>
     </div>
   );
 }

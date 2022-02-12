@@ -12,7 +12,7 @@ export function Keyboard(props: KeyboardProps) {
     .map((row) =>
       row
         .split("")
-        .map((key) => key.replace("B", "Backspace").replace("E", "Enter"))
+        .map((key) => key.replace("B", "Backspace").replace("E", "Intro"))
     );
 
   return (
